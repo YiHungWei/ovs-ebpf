@@ -593,7 +593,7 @@ static int netdev_linux_get_mtu__(struct netdev_linux *netdev, int *mtup);
 #define UMEM2XPKT(base, i) \
     (struct dp_packet_afxdp *)((char *)base + i * sizeof(struct dp_packet_afxdp))
 
-#define AFXDP_NS_TEST /* test under namespaces */
+//#define AFXDP_NS_TEST /* test under namespaces */
 #ifdef AFXDP_NS_TEST
 #define AFXDP_MODE XDP_FLAGS_SKB_MODE /* DRV_MODE or SKB_MODE */
 #else
@@ -634,7 +634,6 @@ static inline int umem_fill_to_kernel_ex(struct xdp_umem_uqueue *fq,
         uint32_t i;
 
         if (umem_nb_free(fq, nb) < nb)  {
-            VLOG_ERR("%s error\n", __func__);
             return -ENOSPC;
         }
 
@@ -657,7 +656,6 @@ static inline int umem_fill_to_kernel(struct xdp_umem_uqueue *fq, uint64_t *d,
     uint32_t i;
 
     if (umem_nb_free(fq, nb) < nb) {
-        VLOG_ERR("%s Not enough free blocks\n", __func__);
         return -ENOSPC;
     }
 
