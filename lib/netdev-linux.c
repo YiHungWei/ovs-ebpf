@@ -1749,7 +1749,7 @@ netdev_linux_rxq_construct(struct netdev_rxq *rxq_)
 #ifdef AFXDP_NS_TEST /* test under namespaces */
         int xdp_queue_id = 0;
 #else
-        int xdp_queue_id = 1;
+        int xdp_queue_id = 0;
 #endif
         struct xdpsock *xsk;
 
