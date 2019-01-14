@@ -1152,12 +1152,6 @@ netdev_linux_afxdp_batch_send(struct xdpsock *xsk, /* send to xdp socket! */
         r[idx].addr = (uint64_t)((char *)elem - xsk->umem->frames);
         r[idx].len = dp_packet_size(packet);
 
-        if (packet->source == DPBUF_AFXDP) {
-            xpacket = dp_packet_cast_afxdp(packet);
-            __umem_elem_push(xpacket->mpool, dp_packet_base(packet));
-            /* Avoid freeing it twice at dp_packet_uninit */
-            xpacket->mpool = NULL;
-        }
     }
     u_smp_wmb();
 
