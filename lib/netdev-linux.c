@@ -1092,7 +1092,7 @@ retry:
             xsleep(1);
             goto retry;
         }
-        descs[0].addr = (uint64_t)((char *)elem - xsk->umem->frames);
+        fill_desc[0].addr = (uint64_t)((char *)elem - xsk->umem->frames);
         umem_fill_to_kernel_ex(&xsk->umem->fq, fill_desc, 1);
     }
 
