@@ -797,7 +797,7 @@ static struct xdp_umem *xdp_umem_configure(int sfd)
         packet = &xpacket->packet;
         packet->source = DPBUF_AFXDP;
 
-        base = (char *)umem->frames + i * FRAME_SIZE;
+        base = (char *)umem->frames + i * FRAME_SIZE + XDP_PACKET_HEADROOM;
         dp_packet_use(packet, base, FRAME_SIZE);
         packet->source = DPBUF_AFXDP;
         dp_packet_set_rss_hash(packet, 0x17802c29);
