@@ -1147,7 +1147,6 @@ netdev_linux_afxdp_batch_send(struct xdpsock *xsk, /* send to xdp socket! */
         }
 
         memcpy(elem, dp_packet_data(packet), dp_packet_size(packet));
-        vlog_hex_dump(dp_packet_data(packet), 14);
 
         r[idx].addr = (uint64_t)((char *)elem - xsk->umem->frames);
         r[idx].len = dp_packet_size(packet);
