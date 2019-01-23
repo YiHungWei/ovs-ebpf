@@ -205,7 +205,7 @@ dp_packet_delete(struct dp_packet *b)
              */
             xpacket = dp_packet_cast_afxdp(b);
             if (xpacket->mpool)
-                __umem_elem_push(xpacket->mpool, dp_packet_base(b));
+                umem_elem_push(xpacket->mpool, dp_packet_base(b));
 
             //free(xpacket);
             return;
